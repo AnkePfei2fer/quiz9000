@@ -1,0 +1,20 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+button {
+  background-color: rgb(65, 65, 65);
+  color: whitesmoke;
+  font-size: 1.25rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.correct {
+  background-color: aquamarine;
+}
+.wrong {
+  background-color: lightpink;
+}
