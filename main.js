@@ -11,17 +11,16 @@ const answerList = [false, false, false, false, false, true];
 
 let questionIndex = 0;
 
-let correctAnswer = answerList[questionIndex];
-
 const myQuestion = document.querySelector(".question");
 myQuestion.textContent = questionList[questionIndex];
+let correctAnswer = answerList[questionIndex];
 
 function showIfAnswerIsCorrect() {
   const newP = document.createElement("p");
   newP.textContent = "You are perfectly right! 😎";
   newP.className = "correct";
   document.body.append(newP);
-  setTimeout(setNewQuestion, 2000);
+  setTimeout(setNewQuestion, 1000);
 }
 
 function showIfAnswerIsWrong() {
@@ -60,5 +59,14 @@ function setNewQuestion() {
   myQuestion.textContent = questionList[questionIndex];
   correctAnswer = answerList[questionIndex];
   document.body.removeChild(document.querySelector(".correct"));
-  // const correctAnswer = false;
+  quizEnd();
+}
+
+function quizEnd() {
+  if (questionIndex === 6) {
+    document.body.removeChild(document.querySelector(".yes"));
+    document.body.removeChild(document.querySelector(".no"));
+    // document.body.removeChild(document.querySelectorAll("button"));
+  } else {
+  }
 }
