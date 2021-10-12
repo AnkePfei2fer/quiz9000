@@ -12,15 +12,6 @@ yesButton.onclick = function () {
   }
 };
 
-// const noButton = document.querySelector(".no");
-// noButton.onclick = function () {
-//   if (correctAnswer === true) {
-//     alert("Think about it one more time!");
-//   } else {
-//     alert("You are perfectly right!");
-//   }
-// };
-
 const noButton = document.querySelector(".no");
 noButton.onclick = function () {
   if (correctAnswer === false) {
