@@ -1,18 +1,20 @@
 const correctAnswer = false;
 
 const myQuestion = document.querySelector(".question");
-myQuestion.textContent = "Are you a robot?";
+myQuestion.textContent = "Are you a robot? 🤖";
 
 function showIfAnswerIsCorrect() {
   const newP = document.createElement("p");
   newP.textContent = "You are perfectly right! 😎";
   newP.className = "correct";
   document.body.append(newP);
+  disableButtons();
+  setNewQuestion();
 }
 
 function showIfAnswerIsWrong() {
   const newP = document.createElement("p");
-  newP.textContent = "Think about it one more time! 😭";
+  newP.textContent = "Think about it one more time! 🧐";
   newP.className = "wrong";
   document.body.append(newP);
 }
@@ -34,3 +36,8 @@ noButton.onclick = function () {
     showIfAnswerIsWrong();
   }
 };
+
+function disableButtons() {
+  yesButton.disabled = true;
+  noButton.disabled = true;
+}
