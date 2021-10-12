@@ -1,14 +1,27 @@
-const correctAnswer = false;
+const questionList = [
+  "Are you a robot? 🤖",
+  "Are you a camel? 🐫",
+  "Are you a frog? 🐸",
+  "Are you a cat? 😸",
+  "Are you a koala? 🐨",
+  "Are you a hacker? 💻",
+];
+
+const answerList = [false, false, false, false, false, true];
+
+let questionIndex = 0;
+
+let correctAnswer = answerList[questionIndex];
 
 const myQuestion = document.querySelector(".question");
-myQuestion.textContent = "Are you a robot? 🤖";
+myQuestion.textContent = questionList[questionIndex];
 
 function showIfAnswerIsCorrect() {
   const newP = document.createElement("p");
   newP.textContent = "You are perfectly right! 😎";
   newP.className = "correct";
   document.body.append(newP);
-  setTimeout(setNewQuestion, 1000);
+  setTimeout(setNewQuestion, 2000);
 }
 
 function showIfAnswerIsWrong() {
@@ -43,7 +56,9 @@ function disableButtons() {
 }
 
 function setNewQuestion() {
-  myQuestion.textContent = "Are you a camel? 🐫";
+  questionIndex += 1;
+  myQuestion.textContent = questionList[questionIndex];
+  correctAnswer = answerList[questionIndex];
   document.body.removeChild(document.querySelector(".correct"));
-  const correctAnswer = false;
+  // const correctAnswer = false;
 }
