@@ -8,15 +8,15 @@ function showIfAnswerIsCorrect() {
   newP.textContent = "You are perfectly right! 😎";
   newP.className = "correct";
   document.body.append(newP);
-  disableButtons();
-  setNewQuestion();
+  setTimeout(setNewQuestion, 1000);
 }
 
 function showIfAnswerIsWrong() {
   const newP = document.createElement("p");
-  newP.textContent = "Think about it one more time! 🧐";
+  newP.textContent = "Oh no, please try again! 🧐";
   newP.className = "wrong";
   document.body.append(newP);
+  disableButtons();
 }
 
 const yesButton = document.querySelector(".yes");
@@ -40,4 +40,10 @@ noButton.onclick = function () {
 function disableButtons() {
   yesButton.disabled = true;
   noButton.disabled = true;
+}
+
+function setNewQuestion() {
+  myQuestion.textContent = "Are you a camel? 🐫";
+  document.body.removeChild(document.querySelector(".correct"));
+  const correctAnswer = false;
 }
