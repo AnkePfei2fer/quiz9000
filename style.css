@@ -4,6 +4,24 @@
   box-sizing: border-box;
 }
 
+.quiz {
+  display: grid;
+  width: 25vw;
+  gap: 1rem;
+  background-color: lightskyblue;
+  border-radius: 2rem;
+  border: rgb(65, 65, 65) solid 0.2rem;
+  place-items: center;
+  margin: 5rem;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 2rem;
+  gap: 2rem;
+}
+
 button {
   background-color: rgb(65, 65, 65);
   color: whitesmoke;

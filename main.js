@@ -19,15 +19,15 @@ function showIfAnswerIsCorrect() {
   const newP = document.createElement("p");
   newP.textContent = "You are perfectly right! 😎";
   newP.className = "correct";
-  document.body.append(newP);
-  setTimeout(setNewQuestion, 1000);
+  document.body.appendChild(newP);
+  setTimeout(setNewQuestion, 2000);
 }
 
 function showIfAnswerIsWrong() {
   const newP = document.createElement("p");
   newP.textContent = "Oh no, please try again! 🧐";
   newP.className = "wrong";
-  document.body.append(newP);
+  document.body.appendChild(newP);
   disableButtons();
 }
 
@@ -64,9 +64,8 @@ function setNewQuestion() {
 
 function quizEnd() {
   if (questionIndex === 6) {
-    document.body.removeChild(document.querySelector(".yes"));
-    document.body.removeChild(document.querySelector(".no"));
-    // document.body.removeChild(document.querySelectorAll("button"));
+    const divQuiz = document.querySelector(".quiz");
+    divQuiz.removeChild(document.querySelector(".buttons"));
   } else {
   }
 }
