@@ -1,39 +1,48 @@
-// Set questions as array
-const questionList = [
-  "Are you a robot? 🤖",
-  "Are you a camel? 🐫",
-  "Are you a frog? 🐸",
-  "Are you a cat? 😸",
-  "Are you a koala? 🐨",
-  "Are you a hacker? 💻",
+// Set questions aand answers as objects in an array
+const questions = [
+  { question: "Are you a robot? 🤖", answer: false },
+  { question: "Are you a camel? 🐫", answer: false },
+  { question: "Are you a frog? 🐸", answer: false },
+  { question: "Are you a cat? 😸", answer: false },
+  { question: "Are you a koala? 🐨", answer: false },
+  { question: "Are you a hacker? 💻", answer: true },
 ];
-
-// Set answers as array
-const answerList = [false, false, false, false, false, true];
 
 let questionIndex = 0;
 
 const myQuestion = document.querySelector(".question");
-myQuestion.textContent = questionList[questionIndex];
-let correctAnswer = answerList[questionIndex];
+myQuestion.textContent = questions[questionIndex].question;
+let correctAnswer = questions[questionIndex].answer;
 updateProgress();
 
 const divQuiz = document.querySelector(".quiz");
 
+// create and return html element
+function createMyElement(tagName, properties) {
+  const element = document.createElement(tagName);
+  element.textContent = textContent;
+  element.className = className;
+  return element;
+}
+
 // If answer is correct, show message and jump to next question
 function showIfAnswerIsCorrect() {
-  const newP = document.createElement("p");
-  newP.textContent = "You are perfectly right! 😎";
-  newP.className = "correct";
+  const newP = createMyElement(
+    "p",
+    (textContent = "You are perfectly right! 😎"),
+    (className = "correct")
+  );
   divQuiz.appendChild(newP);
   setTimeout(setNewQuestion, 1000);
 }
 
 // If answer is wrong, show message and disable button
 function showIfAnswerIsWrong() {
-  const newP = document.createElement("p");
-  newP.textContent = "Oh no, please try again! 🧐";
-  newP.className = "wrong";
+  const newP = createMyElement(
+    "p",
+    (textContent = "Oh no, please try again! 🧐"),
+    (className = "wrong")
+  );
   divQuiz.appendChild(newP);
   disableButtons();
 }
@@ -68,9 +77,9 @@ function disableButtons() {
 function setNewQuestion() {
   questionIndex += 1;
   divQuiz.removeChild(document.querySelector(".correct"));
-  myQuestion.textContent = questionList[questionIndex];
-  correctAnswer = answerList[questionIndex];
-  if (questionIndex < questionList.length) {
+  if (questionIndex < questions.length) {
+    myQuestion.textContent = questions[questionIndex].question;
+    correctAnswer = questions[questionIndex].answer;
     updateProgress();
   } else {
     quizEnd();
@@ -80,7 +89,7 @@ function setNewQuestion() {
 // display current and total question number
 function updateProgress() {
   const progressElement = document.querySelector(".progress");
-  const questionLength = questionList.length;
+  const questionLength = questions.length;
   let questionNumber = questionIndex + 1;
   progressElement.textContent =
     "Question " + questionNumber + " of " + questionLength;
