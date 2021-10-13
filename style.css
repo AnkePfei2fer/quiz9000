@@ -6,7 +6,6 @@
 
 .quiz {
   display: grid;
-  width: 25vw;
   gap: 1rem;
   background-color: lightskyblue;
   border-radius: 2rem;
@@ -22,17 +21,11 @@
   gap: 2rem;
 }
 
-button {
+.yes,
+.no {
   background-color: rgb(65, 65, 65);
   color: whitesmoke;
   font-size: 1.25rem;
   border-radius: 0.5rem;
   padding: 0.5rem;
-}
-
-.correct {
-  background-color: aquamarine;
-}
-.wrong {
-  background-color: lightpink;
 }

@@ -18,12 +18,14 @@ myQuestion.textContent = questionList[questionIndex];
 let correctAnswer = answerList[questionIndex];
 updateProgress();
 
+const divQuiz = document.querySelector(".quiz");
+
 // If answer is correct, show message and jump to next question
 function showIfAnswerIsCorrect() {
   const newP = document.createElement("p");
   newP.textContent = "You are perfectly right! 😎";
   newP.className = "correct";
-  document.body.appendChild(newP);
+  divQuiz.appendChild(newP);
   setTimeout(setNewQuestion, 1000);
 }
 
@@ -32,7 +34,7 @@ function showIfAnswerIsWrong() {
   const newP = document.createElement("p");
   newP.textContent = "Oh no, please try again! 🧐";
   newP.className = "wrong";
-  document.body.appendChild(newP);
+  divQuiz.appendChild(newP);
   disableButtons();
 }
 
@@ -67,7 +69,7 @@ function setNewQuestion() {
   questionIndex += 1;
   myQuestion.textContent = questionList[questionIndex];
   correctAnswer = answerList[questionIndex];
-  document.body.removeChild(document.querySelector(".correct"));
+  divQuiz.removeChild(document.querySelector(".correct"));
   updateProgress();
   quizEnd();
 }
@@ -84,11 +86,12 @@ function updateProgress() {
 // after completing last question, remove buttons and show message
 function quizEnd() {
   if (questionIndex === questionList.length) {
-    const divQuiz = document.querySelector(".quiz");
     divQuiz.removeChild(document.querySelector(".buttons"));
     divQuiz.removeChild(document.querySelector(".progress"));
-    const Congrats = document.createElement("p");
+    divQuiz.removeChild(document.querySelector(".heading"));
+    const Congrats = document.createElement("h1");
     Congrats.textContent = "✨Congratulations! You rocked it!✨";
-    document.body.appendChild(Congrats);
+    Congrats.className = "congrats";
+    divQuiz.appendChild(Congrats);
   }
 }
