@@ -1,0 +1,38 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.quiz {
+  height: 50vh;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+  background-color: lightskyblue;
+  border-radius: 2rem;
+  border: solid rgb(65, 65, 65) 0.2rem;
+  justify-items: center;
+  margin: 5rem;
+}
+
+.questionaire {
+  display: grid;
+  justify-items: center;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 2rem;
+  gap: 2rem;
+}
+
+.yes,
+.no {
+  background-color: rgb(65, 65, 65);
+  color: whitesmoke;
+  font-size: 1.25rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
