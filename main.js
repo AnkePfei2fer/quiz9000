@@ -1,3 +1,4 @@
+// Set questions as array
 const questionList = [
   "Are you a robot? 🤖",
   "Are you a camel? 🐫",
@@ -7,6 +8,7 @@ const questionList = [
   "Are you a hacker? 💻",
 ];
 
+// Set answers as array
 const answerList = [false, false, false, false, false, true];
 
 let questionIndex = 0;
@@ -14,15 +16,18 @@ let questionIndex = 0;
 const myQuestion = document.querySelector(".question");
 myQuestion.textContent = questionList[questionIndex];
 let correctAnswer = answerList[questionIndex];
+updateProgress();
 
+// If answer is correct, show message and jump to next question
 function showIfAnswerIsCorrect() {
   const newP = document.createElement("p");
   newP.textContent = "You are perfectly right! 😎";
   newP.className = "correct";
   document.body.appendChild(newP);
-  setTimeout(setNewQuestion, 2000);
+  setTimeout(setNewQuestion, 1000);
 }
 
+// If answer is wrong, show message and disable button
 function showIfAnswerIsWrong() {
   const newP = document.createElement("p");
   newP.textContent = "Oh no, please try again! 🧐";
@@ -31,6 +36,7 @@ function showIfAnswerIsWrong() {
   disableButtons();
 }
 
+// If correct answer is true
 const yesButton = document.querySelector(".yes");
 yesButton.onclick = function () {
   if (correctAnswer === true) {
@@ -40,6 +46,7 @@ yesButton.onclick = function () {
   }
 };
 
+// If correct answer is false
 const noButton = document.querySelector(".no");
 noButton.onclick = function () {
   if (correctAnswer === false) {
@@ -49,23 +56,39 @@ noButton.onclick = function () {
   }
 };
 
+// disabeling the buttons
 function disableButtons() {
   yesButton.disabled = true;
   noButton.disabled = true;
 }
 
+// when jumping to next question, remove answer message and update progress
 function setNewQuestion() {
   questionIndex += 1;
   myQuestion.textContent = questionList[questionIndex];
   correctAnswer = answerList[questionIndex];
   document.body.removeChild(document.querySelector(".correct"));
+  updateProgress();
   quizEnd();
 }
 
+// display current and total question number
+function updateProgress() {
+  const progressElement = document.querySelector(".progress");
+  const questionLength = questionList.length;
+  let questionNumber = questionIndex + 1;
+  progressElement.textContent =
+    "Question " + questionNumber + "/" + questionLength;
+}
+
+// after completing last question, remove buttons and show message
 function quizEnd() {
-  if (questionIndex === 6) {
+  if (questionIndex === questionList.length) {
     const divQuiz = document.querySelector(".quiz");
     divQuiz.removeChild(document.querySelector(".buttons"));
-  } else {
+    divQuiz.removeChild(document.querySelector(".progress"));
+    const Congrats = document.createElement("p");
+    Congrats.textContent = "✨Congratulations! You rocked it!✨";
+    document.body.appendChild(Congrats);
   }
 }
