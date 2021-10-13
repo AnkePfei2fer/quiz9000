@@ -67,11 +67,14 @@ function disableButtons() {
 // when jumping to next question, remove answer message and update progress
 function setNewQuestion() {
   questionIndex += 1;
+  divQuiz.removeChild(document.querySelector(".correct"));
   myQuestion.textContent = questionList[questionIndex];
   correctAnswer = answerList[questionIndex];
-  divQuiz.removeChild(document.querySelector(".correct"));
-  updateProgress();
-  quizEnd();
+  if (questionIndex < questionList.length) {
+    updateProgress();
+  } else {
+    quizEnd();
+  }
 }
 
 // display current and total question number
@@ -80,18 +83,13 @@ function updateProgress() {
   const questionLength = questionList.length;
   let questionNumber = questionIndex + 1;
   progressElement.textContent =
-    "Question " + questionNumber + "/" + questionLength;
+    "Question " + questionNumber + " of " + questionLength;
 }
 
 // after completing last question, remove buttons and show message
 function quizEnd() {
-  if (questionIndex === questionList.length) {
-    divQuiz.removeChild(document.querySelector(".buttons"));
-    divQuiz.removeChild(document.querySelector(".progress"));
-    divQuiz.removeChild(document.querySelector(".heading"));
-    const Congrats = document.createElement("h1");
-    Congrats.textContent = "✨Congratulations! You rocked it!✨";
-    Congrats.className = "congrats";
-    divQuiz.appendChild(Congrats);
-  }
+  divQuiz.removeChild(document.querySelector(".questionaire"));
+  const Congrats = document.createElement("h1");
+  Congrats.textContent = "✨Congratulations! You rocked it!✨";
+  divQuiz.appendChild(Congrats);
 }

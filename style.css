@@ -5,13 +5,20 @@
 }
 
 .quiz {
+  height: 50vh;
   display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   gap: 1rem;
   background-color: lightskyblue;
   border-radius: 2rem;
-  border: rgb(65, 65, 65) solid 0.2rem;
-  place-items: center;
+  border: solid rgb(65, 65, 65) 0.2rem;
+  justify-items: center;
   margin: 5rem;
+}
+
+.questionaire {
+  display: grid;
+  justify-items: center;
 }
 
 .buttons {
